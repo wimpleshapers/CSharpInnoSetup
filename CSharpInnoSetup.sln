@@ -39,7 +39,20 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example3", "Example3\Exampl
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Shared\Shared.projitems*{0f9738fe-ef18-455b-86be-68c1e09eb37d}*SharedItemsImports = 5
+		Shared\Shared.projitems*{1f6831eb-ba90-42c5-917f-9d3a5dacb2cb}*SharedItemsImports = 5
+		Shared\Shared.projitems*{2deeec87-5ec1-4b13-9b93-408a4749f56d}*SharedItemsImports = 5
+		Shared\Shared.projitems*{3a17ce00-b66e-4b0f-9ffc-2836ad54574e}*SharedItemsImports = 5
+		Shared\Shared.projitems*{4083d7e5-ef85-4671-b784-9f7d5f65be0b}*SharedItemsImports = 5
+		Shared\Shared.projitems*{44a8e381-2ebe-479a-b076-733e3bef1785}*SharedItemsImports = 5
 		Shared\Shared.projitems*{4bf351a4-9a2d-4c2f-b63c-70f32f91ce67}*SharedItemsImports = 13
+		Shared\Shared.projitems*{57123d3c-1c0a-4096-a52e-289ea17f218f}*SharedItemsImports = 5
+		Shared\Shared.projitems*{74ba42f7-8648-419d-ba5b-0f0b5080dd8e}*SharedItemsImports = 5
+		Shared\Shared.projitems*{82cbe1c9-30f7-44c6-ad46-343eb58ad7a7}*SharedItemsImports = 5
+		Shared\Shared.projitems*{840c91d3-7bad-401f-b70b-72055beec142}*SharedItemsImports = 5
+		Shared\Shared.projitems*{96f68f2c-4e23-4e4f-a96b-10d6dec37fc5}*SharedItemsImports = 5
+		Shared\Shared.projitems*{e5f009b0-39be-4611-b8b3-e544ee6ab6cc}*SharedItemsImports = 5
+		Shared\Shared.projitems*{e65c6118-e74e-425c-a22b-13ea354a7830}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
