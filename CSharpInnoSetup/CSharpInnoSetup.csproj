@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>CodingMuscles.CSharpInnoSetup</RootNamespace>
+    <AssemblyName>CodingMuscles.CSharpInnoSetup</AssemblyName>
+    <PackageProjectUrl>https://github.com/wimpleshapers/CSharpInnoSetup</PackageProjectUrl>
+    <Authors>CodingMuscles</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>Creates an Inno Setup v6.0.2 script (.iss) from C# code.</Description>
+    <Product />
+    <Company>CodingMuscles</Company>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>obj\Release\CodingMuscles.CSharpInnoSetup.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>obj\Release\CodingMuscles.CSharpInnoSetup.xml</DocumentationFile>
+    <NoWarn>1701;1702</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ICSharpCode.Decompiler" Version="6.2.1.6137" />
+    <PackageReference Include="System.Reflection.Metadata" Version="5.0.0-rc.2.20475.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Script\Constructs\Code\ISupportMethods.Instrumention.cs">
+      <DependentUpon>ISupportMethods.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  
+  <ItemGroup>      
+    <Compile Update="Installation.Constants.cs">
+      <DependentUpon>Installation.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Installation.Content.cs">
+      <DependentUpon>Installation.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Installation.Events.cs">
+      <DependentUpon>Installation.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Installation.Setup.cs">
+      <DependentUpon>Installation.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Installation.Support.cs">
+      <DependentUpon>Installation.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Installation.Macro.cs">
+      <DependentUpon>Installation.cs</DependentUpon>
+    </Compile>
+</ItemGroup>
+</Project>

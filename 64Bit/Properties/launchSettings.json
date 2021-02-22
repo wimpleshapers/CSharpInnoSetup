@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "64Bit": {
+      "commandName": "Project",
+      "commandLineArgs": "\"D:\\Projects\\Personal\\github\\CSharpInnoSetup\\Shared\\Files\" d:\\temp\\script.iss /pause"
+    }
+  }
+}

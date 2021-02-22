@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>CodingMuscles.CSharpInnoSetup.Example.CodeAutomation</AssemblyName>
+    <RootNamespace>CodingMuscles.CSharpInnoSetup.ExampleCodeAutomation</RootNamespace>
+    <StartupObject>CodingMuscles.CSharpInnoSetup.Example.CodeAutomation.Program</StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if &quot;$(ConfigurationName)&quot; == &quot;Debug&quot; goto:eof&#xD;&#xA;$(TargetDir)$(TargetName).exe &quot;$(SolutionDir)CSharpInnoSetup.Example\Files&quot; &quot;$(ProjectDir)$(IntermediateOutputPath)$(ProjectName).iss&quot;&#xD;&#xA;if %25ERRORLEVEL%25 EQU 0 &quot;C:\Program Files (x86)\Inno Setup 6\ISCC.exe&quot; &quot;$(ProjectDir)$(IntermediateOutputPath)$(ProjectName).iss&quot; /O$(TargetDir)&#xD;&#xA;" />
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSharpInnoSetup\CSharpInnoSetup.csproj" />
+  </ItemGroup>
+
+  <Import Project="..\Shared\Shared.projitems" Label="Shared" />
+
+</Project>

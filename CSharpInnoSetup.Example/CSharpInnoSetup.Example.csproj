@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>CodingMuscles.CSharpInnoSetup.Example</AssemblyName>
+    <RootNamespace>CodingMuscles.CSharpInnoSetup.Example</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Files\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSharpInnoSetup\CSharpInnoSetup.csproj" />
+  </ItemGroup>
+
+</Project>
