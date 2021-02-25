@@ -1546,7 +1546,7 @@ namespace CodingMuscles.CSharpInnoSetup.Generation.Visitor
             typeWriter.WriteLine(string.Format(
                 format,
                 name,
-                string.Join("; ", parameters.Select(p => $"{p.Name}: {LoadType(p.ParameterType.IsByRef ? p.ParameterType.GetElementType() : p.ParameterType).PascalTypeName}")),
+                string.Join("; ", parameters.Select(p => $"{(p.ParameterType.IsByRef ? "var " : "")}{p.Name}: {LoadType(p.ParameterType.IsByRef ? p.ParameterType.GetElementType() : p.ParameterType).PascalTypeName}")),
                 LoadType(methodInfo.ReturnType).PascalTypeName));
         }
 
