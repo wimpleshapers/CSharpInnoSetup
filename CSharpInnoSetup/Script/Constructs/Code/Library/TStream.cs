@@ -22,7 +22,7 @@ namespace CodingMuscles.CSharpInnoSetup.Script.Constructs.Code.Library
         /// <summary>
         /// Inno Setup <a href="https://jrsoftware.org/ishelp/index.php?topic=scriptclasses">Documentation</a>
         /// </summary>
-        public Int64 Seek(Int64 Offset, ushort Origin) => 0;
+        public Int64 Seek(Int64 Offset, TSeekOffset Origin) => 0;
 
         /// <summary>
         /// Inno Setup <a href="https://jrsoftware.org/ishelp/index.php?topic=scriptclasses">Documentation</a>

@@ -191,11 +191,13 @@ namespace CodingMuscles.CSharpInnoSetup.Generation.Visitor
 
         public override void VisitExpressionStatement(ExpressionStatement syntax)
         {
-            // nop default assignments, as they have no translation in pascal
-            if(syntax.FirstChild is AssignmentExpression assignmentExpression &&
-                assignmentExpression.Right is DefaultValueExpression)
+            // nop default/null assignments, as they have no translation in pascal
+            if(syntax.FirstChild is AssignmentExpression assignmentExpression)
             {
-                return;
+                if(assignmentExpression.Right is DefaultValueExpression || assignmentExpression.Right is NullReferenceExpression)
+                {
+                    return;
+                }
             }
 
             syntax.Expression.Visit(this);

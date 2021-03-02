@@ -10,6 +10,6 @@ namespace CodingMuscles.CSharpInnoSetup.Script.Constructs.Code.Library
         /// <summary>
         /// Inno Setup <a href="https://jrsoftware.org/ishelp/index.php?topic=scriptclasses">Documentation</a>
         /// </summary>
-        public TFileStream(string Filename, ushort Mode) : base(0) { }
+        public TFileStream(string Filename, TFileMode Mode) : base(0) { }
     }
 }
