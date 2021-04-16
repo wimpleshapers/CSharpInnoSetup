@@ -1583,10 +1583,12 @@ namespace CodingMuscles.CSharpInnoSetup.Generation.Visitor
         {
             if(parameterInfo != null && typeof(Delegate).IsAssignableFrom(parameterInfo.ParameterType))
             {
-                if(argument is IdentifierExpression expression)
+                var identifier = argument.DescendantsAndSelf.OfType<Identifier>().SingleOrDefault();
+
+                if (identifier != null)
                 {
-                    var method = BindingSearch.Flags.Select(f => _context.GetMethod(expression.Identifier, f)).FirstOrDefault(m => m != null);
-                    if(method != null)
+                    var method = BindingSearch.Flags.Select(f => _context.GetMethod(identifier.Name, f)).FirstOrDefault(m => m != null);
+                    if (method != null)
                     {
                         methodName = method.Name;
                         return true;
