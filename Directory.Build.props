@@ -3,8 +3,8 @@
         <Company>CodingMuscles</Company>
         <Authors>CodingMuscles</Authors>
         <Product>CodingMuscles.CSharpInnoSetup</Product>
-        <AssemblyVersion>1.0.7.0</AssemblyVersion>
-        <FileVersion>1.0.7.0</FileVersion>
-        <Version>1.0.7-rc</Version>
+        <AssemblyVersion>1.0.9.0</AssemblyVersion>
+        <FileVersion>1.0.9.0</FileVersion>
+        <Version>1.0.9-rc</Version>
     </PropertyGroup>
 </Project>

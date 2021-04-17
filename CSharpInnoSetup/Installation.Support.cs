@@ -1740,5 +1740,11 @@ namespace CodingMuscles.CSharpInnoSetup
         /// </summary>
         [BuiltInSymbol]
         public void Log(string S) => throw new NotImplementedException();
+
+        /// <summary>
+        /// Pascal <a href="https://wiki.freepascal.org/Assigned"> Documentation</a>
+        /// </summary>
+        [BuiltInSymbol]
+        public bool Assigned<TPointer>(TPointer pointer) where TPointer : class => throw new NotImplementedException();
     }
 }
