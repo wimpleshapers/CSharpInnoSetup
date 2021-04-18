@@ -364,7 +364,7 @@ namespace CodingMuscles.CSharpInnoSetup.Generation.Visitor
                                 methodDeclCodeWriter.WriteBlankLine();
                             }
 
-                            return "{methodPrefix}{methodName}";
+                            return $"{methodPrefix}{methodName}";
                         };
                     }
                 }
@@ -1312,16 +1312,7 @@ namespace CodingMuscles.CSharpInnoSetup.Generation.Visitor
                         }
                         else
                         {
-                            type = primitiveType.KnownTypeCode switch
-                            {
-                                KnownTypeCode.Boolean => typeof(bool),
-                                KnownTypeCode.Int32 => typeof(int),
-                                KnownTypeCode.String => typeof(string),
-                                KnownTypeCode.Int64 => typeof(long),
-                                KnownTypeCode.Void => typeof(void),
-                                KnownTypeCode.UInt32 => typeof(uint),
-                                _ => throw new NotSupportedException($"Encountered unknown primitive type {primitiveType.KnownTypeCode}")
-                            };
+                            type = ToType(primitiveType.KnownTypeCode);
                         }
                     }
                     break;
@@ -1561,6 +1552,8 @@ namespace CodingMuscles.CSharpInnoSetup.Generation.Visitor
                 KnownTypeCode.String => typeof(string),
                 KnownTypeCode.Int64 => typeof(long),
                 KnownTypeCode.Void => typeof(void),
+                KnownTypeCode.UInt32 => typeof(uint),
+                KnownTypeCode.Byte => typeof(byte),
                 _ => throw new NotSupportedException($"Encountered unknown primitive type {typeCode}")
             };
         }

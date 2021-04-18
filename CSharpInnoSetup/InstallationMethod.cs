@@ -21,7 +21,7 @@ namespace CodingMuscles.CSharpInnoSetup
 
         public string AssemblyLocation => _methodInfo.DeclaringType.Assembly.Location;
 
-        public string UniqueId => _methodInfo.Name;
+        public string UniqueId => _methodInfo.DeclaringType.Name + "." + _methodInfo.Name;
 
         public int MetadataToken => _methodInfo.MetadataToken;
 

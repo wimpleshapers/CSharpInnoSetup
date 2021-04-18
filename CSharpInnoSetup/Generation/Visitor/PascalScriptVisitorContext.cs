@@ -327,7 +327,7 @@ namespace CodingMuscles.CSharpInnoSetup.Generation.Visitor
         /// <returns>True if the method was declared, or false if previously declared</returns>
         public bool DefinedMethod(MethodInfo methodInfo)
         {
-            return _definedMethods.Add(methodInfo.Name);
+            return _definedMethods.Add(methodInfo.DeclaringType.Name + "." + methodInfo.Name);
         }
 
         /// <summary>
