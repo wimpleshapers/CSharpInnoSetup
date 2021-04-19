@@ -230,11 +230,6 @@ namespace CodingMuscles.CSharpInnoSetup.Generation.Visitor
             return _installation.GetType().GetMethod(name, bindingAttr);
         }
 
-        public MethodInfo GetBaseMethod(string name, BindingFlags bindingFlags)
-        {
-            return _baseInstallationType?.GetMethod(name, bindingFlags);
-        }
-
         /// <summary>
         /// Invokes a given method
         /// </summary>

@@ -16,6 +16,7 @@ using System.Dynamic;
 using System.Text.RegularExpressions;
 using ICSharpCode.Decompiler.Semantics;
 using System.Globalization;
+using ICSharpCode.Decompiler.CSharp.Resolver;
 
 namespace CodingMuscles.CSharpInnoSetup.Generation.Visitor
 {
@@ -341,7 +342,11 @@ namespace CodingMuscles.CSharpInnoSetup.Generation.Visitor
                 }
                 else if (objectName == _baseKeyword)
                 {
-                    methodInfo = BindingSearch.Flags.Select(f => _context.GetBaseMethod(methodName, f)).FirstOrDefault(m => m != null);
+                    var typeResult = syntax.Annotations.OfType<CSharpInvocationResolveResult>().FirstOrDefault(t => t != null);
+                    var typeName = typeResult.TargetResult.Type.ReflectionName.Substring(typeResult.TargetResult.Type.ReflectionName.LastIndexOf('.') + 1);
+                    var baseType = _context.GetType(typeName);
+
+                    methodInfo = baseType.GetMethod(methodName);
 
                     if (methodInfo != null)
                     {
