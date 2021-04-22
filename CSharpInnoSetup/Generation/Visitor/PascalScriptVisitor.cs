@@ -346,7 +346,7 @@ namespace CodingMuscles.CSharpInnoSetup.Generation.Visitor
                     var typeName = typeResult.TargetResult.Type.ReflectionName.Substring(typeResult.TargetResult.Type.ReflectionName.LastIndexOf('.') + 1);
                     var baseType = _context.GetType(typeName);
 
-                    methodInfo = baseType.GetMethod(methodName);
+                    methodInfo = BindingSearch.Flags.Select(f => baseType.GetMethod(methodName, f)).FirstOrDefault(m => m != null);
 
                     if (methodInfo != null)
                     {
