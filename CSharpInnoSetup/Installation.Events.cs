@@ -83,6 +83,7 @@ namespace CodingMuscles.CSharpInnoSetup
         /// Inno <a href="https://jrsoftware.org/ishelp/topic_scriptevents.htm">Documentation</a>
         /// </summary>
         [EventHandler]
+        [Alias("this_InitializeUninstall")]
         public virtual bool InitializeUninstall() => true;
 
         /// <summary>

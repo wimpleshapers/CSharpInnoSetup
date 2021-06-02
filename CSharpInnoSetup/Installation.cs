@@ -191,6 +191,7 @@ namespace CodingMuscles.CSharpInnoSetup
                 });
 
                 bool encounteredInitializeSetup = false;
+                bool encounteredInitializeUninstall = false;
                 var referencedGlobalVariables = new Dictionary<FieldInfo, string>();
                 var definedMethods = new HashSet<string>();
                 var declaredMembers = new HashSet<MemberInfo>();
@@ -208,9 +209,15 @@ namespace CodingMuscles.CSharpInnoSetup
                 {
                     foreach (var installationMethod in allMethods)
                     {
-                        if (installationMethod.Name == nameof(Installation.InitializeSetup))
+                        switch (installationMethod.Name)
                         {
-                            encounteredInitializeSetup = true;
+                            case nameof(Installation.InitializeSetup):
+                                encounteredInitializeSetup = true;
+                                break;
+
+                            case nameof(Installation.InitializeUninstall):
+                                encounteredInitializeUninstall = true;
+                                break;
                         }
 
                         if(!definedMethods.Add(installationMethod.UniqueId))
@@ -319,21 +326,48 @@ namespace CodingMuscles.CSharpInnoSetup
                         // write body of code
                         snippet.CopyTo(codeWriter);
 
-                        if (encounteredInitializeSetup || variableInitialization.Count > 0)
+                        using(var globalVariableSnippet = new Snippet())
                         {
-                            // write InitializeSetup
-                            codeWriter.WriteLine($"function {nameof(Installation.InitializeSetup)}: Boolean;");
-                            codeWriter.WriteLine("begin");
-
-                            using (codeWriter.Indent())
+                            using(var globalVariableWriter = new TextCodeWriter(globalVariableSnippet, null, true))
                             {
-                                // write variable initialization
-                                variableInitialization.ForEach(init => codeWriter.WriteLine($"{init.name} := {init.rhs};"));
-                                codeWriter.WriteBlankLine();
-                                codeWriter.WriteLine(encounteredInitializeSetup ? "Result := this_InitializeSetup();" : "Result := True;");
+                                variableInitialization.ForEach(init => globalVariableWriter.WriteLine($"{init.name} := {init.rhs};"));
                             }
 
-                            codeWriter.WriteLine("end;");
+                            if (encounteredInitializeSetup || variableInitialization.Count > 0)
+                            {
+                                // write InitializeSetup
+                                codeWriter.WriteLine($"function {nameof(Installation.InitializeSetup)}: Boolean;");
+                                codeWriter.WriteBegin();
+
+                                using (codeWriter.Indent())
+                                {
+                                    // write variable initialization
+                                    globalVariableSnippet.CopyTo(codeWriter);
+
+                                    codeWriter.WriteBlankLine();
+                                    codeWriter.WriteLine(encounteredInitializeSetup ? "Result := this_InitializeSetup();" : "Result := True;");
+                                }
+
+                                codeWriter.WriteEnd();
+                            }
+
+                            if (encounteredInitializeUninstall || variableInitialization.Count > 0)
+                            {
+                                // write InitializeSetup
+                                codeWriter.WriteLine($"function {nameof(Installation.InitializeUninstall)}: Boolean;");
+                                codeWriter.WriteBegin();
+
+                                using (codeWriter.Indent())
+                                {
+                                    // write variable initialization
+                                    globalVariableSnippet.CopyTo(codeWriter);
+
+                                    codeWriter.WriteBlankLine();
+                                    codeWriter.WriteLine(encounteredInitializeUninstall ? "Result := this_InitializeUninstall();" : "Result := True;");
+                                }
+
+                                codeWriter.WriteEnd();
+                            }
                         }
                     }
                 }
