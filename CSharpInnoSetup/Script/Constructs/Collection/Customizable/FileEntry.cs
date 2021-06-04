@@ -43,6 +43,7 @@ namespace CodingMuscles.CSharpInnoSetup.Script.Constructs.Collection.Customizabl
         /// Inno <a href="https://jrsoftware.org/ishelp/index.php?topic=filessection">Documentation</a>
         /// </summary>
         [DoubleQuote]
+        [TypeConverter(typeof(EnumerableToCommaSeparatedStringConverter))]
         public string[] Excludes { get; private set; }
 
         /// <summary>
